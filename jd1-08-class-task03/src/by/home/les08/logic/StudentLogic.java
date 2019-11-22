@@ -26,28 +26,5 @@ public class StudentLogic {
 		}
 	}
 
-	/*
-	public Student[] takeExcellentStudents(Student[] student) {
-
-		Student[] hasMarksOverNine = new Student[student.length];
-		Student[] nullSt = null;
-		
-		int j = 0;
-
-		for (int i = 0; i < student.length; i++) {
-
-			if (isExcellentStudent(student[i])) {
-				hasMarksOverNine[j] = student[i];
-				j++;
-			}
-		}
-
-		if (j != 0) {
-			return hasMarksOverNine;
-		} else {
-			return nullSt;
-		}
-
-	} 
-	*/
+	
 }
