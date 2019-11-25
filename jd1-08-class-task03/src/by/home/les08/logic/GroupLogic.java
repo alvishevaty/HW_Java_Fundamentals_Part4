@@ -16,6 +16,7 @@ public class GroupLogic {
 
 		int j = 0;
 		for (int i = 0; i < group.getStudents().length; i++) {
+			
 			if (studentLogic.isExcellentStudent(group.getStudents()[i])) {
 				result.add(group.getStudents()[i]);
 				j++;

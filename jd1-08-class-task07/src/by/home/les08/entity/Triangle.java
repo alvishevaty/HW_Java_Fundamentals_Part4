@@ -2,46 +2,44 @@ package by.home.les08.entity;
 
 public class Triangle {
 
-	Point point = new Point();
-
-	private double side;
+	private double side1;
+	private double side2;
+	private double side3;
 
 	public Triangle() {
-		this.side = 0;
+		this.side1 = 0;
+		this.side2 = 0;
+		this.side3 = 0;
 	}
 
-	public Triangle(Point p1, Point p2) {
-		int a = 0;
-		int b = 0;
-
-		if (p1.getX() <= 0 & p2.getX() >= 0 || p1.getX() >= 0 & p2.getX() <= 0) {
-			a = Math.abs(p1.getX()) + Math.abs(p2.getX());
-		} else if (p1.getX() <= 0 & p2.getX() <= 0 || p1.getX() >= 0 & p2.getX() >= 0) {
-			if (Math.abs(p1.getX()) >= Math.abs(p2.getX())) {
-				a = Math.abs(p1.getX()) - Math.abs(p2.getX());
-			} else {
-				a = Math.abs(p2.getX()) - Math.abs(p1.getX());
-			}
-		}
-
-		if (p1.getY() <= 0 & p2.getY() >= 0 || p1.getY() >= 0 & p2.getY() <= 0) {
-			b = Math.abs(p1.getY()) + Math.abs(p2.getY());
-		} else if (p1.getY() <= 0 & p2.getY() <= 0 || p1.getY() >= 0 & p2.getY() >= 0) {
-			if (Math.abs(p1.getY()) >= Math.abs(p2.getY())) {
-				b = Math.abs(p1.getY()) - Math.abs(p2.getY());
-			} else {
-				b = Math.abs(p2.getY()) - Math.abs(p1.getY());
-			}
-		}
-		this.side = Math.sqrt(a * a + b * b);
+	public Triangle(double side1, double side2, double side3) {
+		this.side1 = side1;
+		this.side2 = side2;
+		this.side3 = side3;
 	}
 
-	public double getSide() {
-		return side;
+	public double getSide1() {
+		return side1;
 	}
 
-	public void setSide(double side) {
-		this.side = side;
+	public void setSide1(double side1) {
+		this.side1 = side1;
+	}
+
+	public double getSide2() {
+		return side2;
+	}
+
+	public void setSide2(double side2) {
+		this.side2 = side2;
+	}
+
+	public double getSide3() {
+		return side3;
+	}
+
+	public void setSide3(double side3) {
+		this.side3 = side3;
 	}
 
 	@Override
@@ -49,7 +47,11 @@ public class Triangle {
 		final int prime = 31;
 		int result = 1;
 		long temp;
-		temp = Double.doubleToLongBits(side);
+		temp = Double.doubleToLongBits(side1);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(side2);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(side3);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -63,9 +65,14 @@ public class Triangle {
 		if (getClass() != obj.getClass())
 			return false;
 		Triangle other = (Triangle) obj;
-		if (Double.doubleToLongBits(side) != Double.doubleToLongBits(other.side))
+		if (Double.doubleToLongBits(side1) != Double.doubleToLongBits(other.side1))
+			return false;
+		if (Double.doubleToLongBits(side2) != Double.doubleToLongBits(other.side2))
+			return false;
+		if (Double.doubleToLongBits(side3) != Double.doubleToLongBits(other.side3))
 			return false;
 		return true;
 	}
 
+	
 }

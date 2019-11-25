@@ -1,17 +1,39 @@
 package by.home.les08.view;
 
+import java.util.Scanner;
+
 public class TimeView {
+	
+	public int[] setUserTime() {
 
-	public void printTime(int[] mas) {
+		int[] arrayHourMinSec = new int[3];
+		String[] denomination = new String[] { "часа, ч", "минут, мин", "секунд, с" };
 
-		String[] mas1 = new String[] { "ч", "мин", "с" };
+		for (int i = 0; i < arrayHourMinSec.length; i++) {
+
+			Scanner sc = new Scanner(System.in);
+
+			System.out.print("Введте значение для " + denomination[i] + ": ");
+
+			while (sc.hasNextInt() == false) {
+				String s = sc.next();
+				System.out.print("Повторите ввод: ");
+			}
+			arrayHourMinSec[i] = sc.nextInt();
+		}
+		return arrayHourMinSec;
+	}
+
+	public void printTime(int[] arrayHourMinSec) {
+
+		String[] denomination = new String[] { "ч", "мин", "с" };
 		int j = 0;
 
-		for (int i = mas.length - 1; i > 0; i--) {
-			System.out.print(mas[i] + mas1[j] + " ");
+		for (int i = arrayHourMinSec.length - 1; i > 0; i--) {
+			System.out.print(arrayHourMinSec[i] + denomination[j] + " ");
 			j++;
 		}
-		System.out.print(mas[0] + mas1[j]);
+		System.out.print(arrayHourMinSec[0] + denomination[j]);
 	}
 
 	public void printTime(int hour, int minute, int second) {

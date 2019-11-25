@@ -6,27 +6,32 @@ import by.home.les08.logic.Calculation;
 import by.home.les08.view.TriangleView;
 
 public class Main {
-	
+
+	/*
+	 * 7. Описать класс, представляющий треугольник. Предусмотреть методы для
+	 * создания объектов, вычисления площади, периметра и точки пересечения медиан.
+	 */
+
 	public static void main(String[] args) {
-		
-		Point point1 = new Point(2, 2);
-		Point point2 = new Point(-2, 3);
-		Point point3 = new Point(0, -5);
-		
-		Triangle side1 = new Triangle(point1, point2);
-		Triangle side2 = new Triangle(point2, point3);
-		Triangle side3 = new Triangle(point3, point1);
-		
-		Calculation calc = new Calculation();
+
+		Point point1 = new Point(0.0, 0.0);
+		Point point2 = new Point(3.0, 0.0);
+		Point point3 = new Point(0.0, 4.0);
+
+		Calculation calculation = new Calculation();
+		Triangle triangle = new Triangle();
 		TriangleView triangleView = new TriangleView();
-		
-		triangleView.printSide("Сторона АВ: ", side1.getSide());
-		triangleView.printSide("Сторона ВC: ", side2.getSide());
-		triangleView.printSide("Сторона CA: ", side3.getSide());
-		
-		triangleView.printTriangleParameter("Площадь треугольника:", calc.area(side1.getSide(), side2.getSide(), side3.getSide()));
-		triangleView.printTriangleParameter("Периметр треугольника:", calc.perimeter(side1.getSide(), side2.getSide(), side3.getSide()));
-		
-		triangleView.printMediansCenterCoord(calc.mediansCenter(point1, point2, point3));
+
+		triangle.setSide1(calculation.sideCalculation(point1, point2));
+		triangle.setSide2(calculation.sideCalculation(point2, point3));
+		triangle.setSide3(calculation.sideCalculation(point3, point1));
+
+		triangleView.printSide("Сторона АВ: ", triangle.getSide1());
+		triangleView.printSide("Сторона ВC: ", triangle.getSide2());
+		triangleView.printSide("Сторона CA: ", triangle.getSide3());
+
+		triangleView.printTriangleParameter("Периметр треугольника: ", calculation.perimeter(triangle));
+		triangleView.printTriangleParameter("Площадь треугольника: ", calculation.area(triangle));
+		triangleView.printMediansCenterCoord(calculation.mediansCenter(point1, point2, point3));
 	}
 }

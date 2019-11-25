@@ -2,7 +2,6 @@ package by.home.les08.entity;
 
 public class Train {
 
-	// название пункта назначения, номер поезда, время отправления
 
 	private String destination;
 	private String departure;

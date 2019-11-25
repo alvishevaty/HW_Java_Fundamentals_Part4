@@ -8,15 +8,15 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Time time = new Time();
-		TimeLogic timeLogic = new TimeLogic();
-		TimeView timeView = new TimeView();
+		final Time time = new Time();
+		final TimeLogic timeLogic = new TimeLogic();
+		final TimeView timeView = new TimeView();
 
 		time.setHour(18);
 		time.setMinute(34);
 		time.setSecond(53);
 
-		int[] newTime = timeLogic.changeTime(timeLogic.setUserTime(), time);
+		int[] newTime = timeLogic.changeTime(timeView.setUserTime(), time);
 
 		System.out.println("Начальное время:");
 		timeView.printTime(time.getHour(), time.getMinute(), time.getSecond());
