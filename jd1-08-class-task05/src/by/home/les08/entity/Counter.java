@@ -17,6 +17,16 @@ public class Counter {
 		this.count = count;
 	}
 
+	public int elementIncrement(int value) {
+		value++;
+		return value;
+	}
+
+	public int elementDecrement(int value) {
+		value--;
+		return value;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -38,15 +48,5 @@ public class Counter {
 			return false;
 		return true;
 	}
-
-	public int elementIncrement(int value) {
-			value++;
-			return value;
-	}
-	
-	public int elementDecrement(int value) {
-		value--;
-		return value;
-}
 
 }
